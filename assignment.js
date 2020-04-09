@@ -61,8 +61,8 @@ const bot = new builder.UniversalBot(connector, [
     if(weather.cod == 200) {
       session.send(`Got it! weather: ${weather.weather[0].main},  more specifically: ${weather.weather[0].description}.
       temperature: ${weather.main.temp}, feel Temperature: ${weather.main.feels_like}, maximun temperature: ${weather.main.temp_max}, 
-      minimum temperature: ${weather.main.temp_min}, pressure: ${weather.main.pressure}, humidity: ${weather.main.humidity}, wind speed:
-      ${weather.wind.speed}, sunrise: ${getDateFromTimestamp(weather.sys.sunrise)}, sunset: ${getDateFromTimestamp(weather.sys.sunset)},
+      minimum temperature: ${weather.main.temp_min}, pressure: ${weather.main.pressure}, humidity: ${weather.main.humidity}, wind speed: ${weather.wind.speed}, 
+      sunrise: ${getDateFromTimestamp(weather.sys.sunrise)}, sunset: ${getDateFromTimestamp(weather.sys.sunset)},
       url: ${url}`)
     } else {
       session.send(`Unexpected result with code: ${weather.cod} when requesting url: ${url}. Gathered input data from user-> api id: ${session.userData.apiId}, 
@@ -74,7 +74,7 @@ const bot = new builder.UniversalBot(connector, [
 
 callOpenWeather = (url) => {
   let response;
-  var xmlhttp = new XMLHttpRequest()
+  let xmlhttp = new XMLHttpRequest()
   xmlhttp.onreadystatechange = () => response = xmlhttp.responseText
   xmlhttp.open("GET", url, false)
   xmlhttp.send()
@@ -83,8 +83,8 @@ callOpenWeather = (url) => {
 }
 
 getDayTime = () => {
-  var now = new Date()
-  var startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const now = new Date()
+  const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate())
   
   return startOfDay / 1000
 }
