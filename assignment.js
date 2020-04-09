@@ -113,11 +113,12 @@ getUrlParameterString = (userData) => {
   parameterString = `q=${userData.locationTypeValue.trim()}`
   if(userData.locationType == 'Latitude and longitude') {
     const values = userData.locationTypeValue.trim().split(' ')
-    const latitude = parseFloat(values[0].trim())
-    const longitude = parseFloat(values[1].trim())
-
-    if(values.length == 2 && !isNaN(latitude) && !isNaN(longitude)) {  
-      parameterString = `lat=${latitude}&lon=${longitude}`
+    if(values.length == 2) {
+      const latitude = parseFloat(values[0].trim())
+      const longitude = parseFloat(values[1].trim())
+      if(!isNaN(latitude) && !isNaN(longitude)) {  
+        parameterString = `lat=${latitude}&lon=${longitude}`
+      }
     }
   }
 
